@@ -18,8 +18,15 @@ option(ENABLE_COMPILER_WARNINGS "Project compile warnings." ON)
 
 cmake_print_variables(CMAKE_BUILD_TYPE ENABLE_COMPILER_WARNINGS CMAKE_CXX_FLAGS)
 
+# Sources
+file(GLOB CPP_SOURCES RELATIVE ${PROJECT_SOURCE_DIR} src/*.cpp)
+
 # Executables
-add_executable(run_${PROJECT_NAME} main.cpp)
+foreach (CPP_SOURCE ${CPP_SOURCES})
+    get_filename_component(EXEC_NAME ${CPP_SOURCE} NAME_WE)
+
+    add_executable(${EXEC_NAME} ${CPP_SOURCE})
+endforeach (CPP_SOURCE ${CPP_SOURCES})
 
 # Warnings
 if (ENABLE_COMPILER_WARNINGS)
@@ -27,5 +34,8 @@ if (ENABLE_COMPILER_WARNINGS)
     add_library(project_warnings INTERFACE)
     set_project_warnings(project_warnings)
 
-    target_link_libraries(run_${PROJECT_NAME} PRIVATE project_warnings)
+    foreach (CPP_SOURCE ${CPP_SOURCES})
+        get_filename_component(EXEC_NAME ${CPP_SOURCE} NAME_WE)
+        target_link_libraries(${EXEC_NAME} PRIVATE project_warnings)
+    endforeach (CPP_SOURCE ${CPP_SOURCES})
 endif (ENABLE_COMPILER_WARNINGS)
