@@ -28,6 +28,8 @@ foreach (CPP_SOURCE ${CPP_SOURCES})
     add_executable(${EXEC_NAME} ${CPP_SOURCE})
 endforeach (CPP_SOURCE ${CPP_SOURCES})
 
+include_directories(include)
+
 # Warnings
 if (ENABLE_COMPILER_WARNINGS)
     message(STATUS "Compiler warnings: enabled")
