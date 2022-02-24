@@ -14,7 +14,7 @@ include(CMakePrintHelpers)
 include(cmake/CompilerWarnings.cmake)
 
 # Options
-option(ENABLE_COMPILER_WARNINGS "Project compile warnings." ON)
+option(ENABLE_COMPILER_WARNINGS "Project compile warnings." OFF)
 
 cmake_print_variables(CMAKE_BUILD_TYPE ENABLE_COMPILER_WARNINGS CMAKE_CXX_FLAGS)
 
