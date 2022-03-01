@@ -87,7 +87,7 @@ int main() {
 
   // Проверка указателя на то, что он ссылается на "существующий" участок в памяти.
 
-  if (pointer_to_a) {  // != nullptr
+  if (pointer_to_a != nullptr) {
     std::cout << "Pointer 'a' is not nullptr\n";
   }
 
