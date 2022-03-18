@@ -1,4 +1,4 @@
-# C++ basics classwork
+# Classwork. C++ basics
 
 [![Build Status](../../actions/workflows/cmake.yml/badge.svg)](../../actions/workflows/cmake.yml)
 
